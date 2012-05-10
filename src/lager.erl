@@ -276,7 +276,7 @@ safe_notify(Event) ->
             %% lager isn't running
             {error, lager_not_running};
         Pid ->
-            gen_event:sync_notify(Pid, Event)
+            gen_event:notify(Pid, Event)
     end.
 
 %% @doc Print the format string `Fmt' with `Args' safely with a size
