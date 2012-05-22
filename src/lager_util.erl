@@ -54,7 +54,7 @@ open_logfile(Name, Buffer) ->
     case filelib:ensure_dir(Name) of
         ok ->
             Options = [append, raw] ++
-            if Buffer == true -> [delayed_write];
+            if Buffer == true -> [{delayed_write, 3*1024*1024, 2000}];
                 true -> []
             end,
             case file:open(Name, Options) of
